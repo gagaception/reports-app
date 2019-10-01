@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {
+  isEmptyObject,
+} from '../helpers/helpers';
 
 export default class Login extends Component {
   constructor(props) {
@@ -8,7 +11,7 @@ export default class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      loginErrors: ""
+      error: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,12 +42,29 @@ export default class Login extends Component {
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data);
           this.props.history.push("/reports");
+        } else {
+          this.setState ({
+            error: response.data.msg
+          });
         }
       })
       .catch(error => {
         console.log("Log in error", error);
       });
     event.preventDefault();
+  }
+
+  renderErrors() {
+    const { error } = this.state;
+    if (isEmptyObject(error)) {
+      return null;
+    }
+
+    return (
+      <div className="loginError">
+        <p key={error}>{error}</p>
+      </div>
+    )
   }
 
   render() {
@@ -73,6 +93,7 @@ export default class Login extends Component {
               required
             />
           </div>
+          {this.renderErrors()}
           <button type="submit">Login</button>
         </form>
       </div>
