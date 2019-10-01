@@ -2,7 +2,7 @@ export const isEmptyObject = obj => Object.keys(obj).length === 0;
 
 export const validateForm = report => {
   const errors = {};
-  const allowedExtensions = /(\.jpg|\.pdf|\.txt|\.tiff\.JPG|\.PDF|\.TXT|\.TIFF)$/i;
+  const allowedExtensions = /(\.png|\.pdf|\.txt|\.tiff\.JPG|\.PNG|\.TXT|\.TIFF)$/i;
   
   if (report.title.length < 3 || report.title.length > 10) {
     errors.title = 'Title length should be from 3 to 10 symbols';
