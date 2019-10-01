@@ -10,7 +10,11 @@ class Api::ReportsController < ApplicationController
   end
 
   def create
-    report = Report.new(report_params)
+    report = Report.new(  
+                          title: params[:title],
+                          description: params[:description],
+                          file: params[:file]
+                        )
     if report.save
       respond_with :api, report
     else
@@ -22,13 +26,5 @@ class Api::ReportsController < ApplicationController
     report = Report.find(params['id'])
     report.update(report_params)
     respond_with Report, json: report
-  end
-
-  private
-
-  def report_params
-    params.require(:report).permit(
-      :title, :description, :filename, :payload
-    )
   end
 end

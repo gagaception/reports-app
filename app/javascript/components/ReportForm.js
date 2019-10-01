@@ -23,10 +23,17 @@ class ReportForm extends Component {
     const { report } = this.state;
     const errors = validateForm(report);
 
+    const data = new FormData();
+    
+    for (var key in report) {
+      data.append(key, report[key]);
+    }
+
     if (!isEmptyObject(errors)) {
       this.setState({ errors });
     } else {
-      console.log(report);
+      const { onSubmit } = this.props;
+      onSubmit(data);
     }
   }
 
@@ -114,6 +121,7 @@ class ReportForm extends Component {
 
 ReportForm.propTypes = {
   report: PropTypes.shape(),
+  onSubmit: PropTypes.func.isRequired
 };
 
 ReportForm.defaultProps = {

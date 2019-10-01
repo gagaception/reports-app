@@ -6,6 +6,7 @@ import Report from './Report';
 import PropsRoute from './PropsRoute';
 import ReportForm from './ReportForm';
 import { Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Main extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class Main extends React.Component {
     this.state = {
       reports: null,
     };
+
+    this.createReport = this.createReport.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +28,25 @@ class Main extends React.Component {
       }))
       .catch((error) => {
         console.log(error);
+      });
+  }
+
+  createReport(newReport)  {
+    axios
+      .post(
+        "/api/reports.json", newReport,
+        { withCredentials: true }
+      )
+      .then(response => {
+        const savedReport = response.data;
+        this.setState(prevState => ({
+          reports: [...prevState.reports, savedReport],
+        }));
+        const { history } = this.props;
+        history.push(`/reports/${savedEvent.id}`);
+      })
+      .catch(error => {
+        this.setState({errors: error});
       });
   }
 
@@ -49,7 +71,7 @@ class Main extends React.Component {
           }
           /> 
           <Switch>
-            <PropsRoute exact path="/reports/new" component={ReportForm} />
+            <PropsRoute exact path="/reports/new" component={ReportForm} onSubmit={this.createReport}/>
             <PropsRoute exact path="/reports/:id" component={Report} report={report} />
           </Switch>
         </div>
@@ -57,5 +79,10 @@ class Main extends React.Component {
     );
   }
 }
+
+Main.propTypes = {
+  match: PropTypes.shape(),
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+};
 
 export default Main;

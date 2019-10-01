@@ -6,6 +6,8 @@ const Report = ({ report }) => (
     <h2>
       {report.title}
     </h2>
+    <p>{report.description}</p>
+    <a href="#" download>{report.filename}</a>
   </div>
 );
 
