@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Report = ({ report }) => (
-  <div className="eventContainer">
+  <div className="reportContainer">
     <h2>
       {report.title}
       <Link to={`/reports/${report.id}/edit`}>Edit</Link>

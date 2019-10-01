@@ -22,7 +22,7 @@ class Reports extends React.Component {
       <section  className="reportList">
         <h2>
           Reports
-          <Link to="/reports/new">New report</Link>
+          <Link to="/reports/new">+ New report</Link>
         </h2>
         <ul>{ this.renderReports()}</ul>
       </section>

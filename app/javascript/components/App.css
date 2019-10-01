@@ -43,7 +43,7 @@ body {
 }
 
 header {
-  background: #f57011;
+  background: #236fff;
   height: 60px;
 }
 
@@ -85,7 +85,6 @@ header .header-right a:hover {
   text-align: center;
 }
 .loginForm button {
-  margin: 0 !important;
   font-size: 24px;
 }
 
@@ -121,6 +120,9 @@ header .header-right a:hover {
 
 .reportContainer h2 {
   margin-bottom: 10px;
+}
+.reportContainer h2 a {
+  float: right;
 }
 
 .reportList li:hover,
@@ -172,13 +174,13 @@ input[type="checkbox"] {
 }
 
 button[type="submit"] {
-  background: #f57011;
+  background: #236fff;
   border: none;
   padding: 5px 25px 8px;
   font-weight: 500;
   color: white;
   cursor: pointer;
-  margin: 10px 0 0 106px;
+  font-size: 24px;
 }
 
 .errors {

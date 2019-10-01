@@ -22,7 +22,9 @@ class Main extends React.Component {
 
   componentDidMount() {
     axios
-      .get('/api/reports.json')
+      .get('/api/reports.json', {
+        withCredentials: true
+      })
       .then(response => 
         this.setState({
         reports: response.data

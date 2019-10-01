@@ -85,38 +85,46 @@ class ReportForm extends Component {
 
   render() {
     const { report } = this.state
+    const { onSubmit } = this.props;
 
     return (
       <div>
         <h2>New Event</h2>
         <form className="reportForm" onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="formGroup">
             <input
-              className="form-control"
+              className="formControl"
               type="text"
               name="title"
+              placeholder="Enter report's title"
               onChange={this.handleInputChange}
               value={report.title}
               required
             />
           </div>  
-          <div className="form-group">
+          <div className="formGroup">
             <textarea
-              className="form-control"
-              rows="10"
+              className="formControl"
+              rows="20"
               type="text"
               name="description"
+              placeholder = "Enter report's description"
               value={report.description}
               onChange={this.handleInputChange}
             />
-          </div>  
-          <div className="form-group">
-            <input type="file" className="form-control-file" name="file" onChange={this.fileUploadHandler} />
           </div>
+          {
+            onSubmit.name == "bound updateReport" ?
+            ''
+            :
+            <div className="formGroup">
+              <input type="file" name="file" onChange={this.fileUploadHandler} />
+            </div>
+          }
 
           {this.renderErrors()}
 
-          <div className="form-actions">
+          <div className="formActions">
             <button type="submit">Save</button>
           </div>
         </form>
