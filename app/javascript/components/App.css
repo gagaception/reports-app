@@ -48,7 +48,8 @@ header {
 }
 
 header h1,
-header h1 a {
+header h1 a,
+header .header-right {
   display: inline-block;
   font-family: "Maven Pro";
   font-size: 28px;
@@ -61,7 +62,23 @@ header h1 a {
 header h1 a:hover {
   text-decoration: underline;
 }
+header .header-right
+ {
+  float: right;
+  font-size: 18px;
+}
 
+header .header-right p {
+  float: left;
+  margin-right: 40px;
+}
+
+header .header-right a {
+  float: right;
+}
+header .header-right a:hover {
+  cursor: pointer;
+}
 .grid {
   display: grid;
   grid-gap: 50px;

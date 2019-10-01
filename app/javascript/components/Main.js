@@ -13,7 +13,7 @@ class Main extends React.Component {
     super(props);
 
     this.state = {
-      reports: null,
+      reports: null
     };
 
     this.createReport = this.createReport.bind(this);
@@ -76,10 +76,8 @@ class Main extends React.Component {
     const reportId = match.params.id;
     const report = reports.find(e => e.id === Number(reportId));
 
-
     return ( 
       <div>
-        <Header />
         <div className="grid">
           <Reports reports={reports} activeId = {Number(reportId)} /> 
           <Switch>
