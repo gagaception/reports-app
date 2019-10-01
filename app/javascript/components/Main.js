@@ -42,8 +42,7 @@ class Main extends React.Component {
         this.setState(prevState => ({
           reports: [...prevState.reports, savedReport],
         }));
-        const { history } = this.props;
-        history.push(`/reports/${savedEvent.id}`);
+        this.props.history.push(`/reports/${savedReport.id}`);
       })
       .catch(error => {
         this.setState({errors: error});

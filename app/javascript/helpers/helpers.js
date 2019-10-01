@@ -1,7 +1,6 @@
 export const isEmptyObject = obj => Object.keys(obj).length === 0;
 
 export const validateForm = report => {
-  console.log(report);
   const errors = {};
   const allowedExtensions = /(\.jpg|\.pdf|\.txt|\.tiff\.JPG|\.PDF|\.TXT|\.TIFF)$/i;
   
