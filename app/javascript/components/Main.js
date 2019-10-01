@@ -17,6 +17,7 @@ class Main extends React.Component {
     };
 
     this.createReport = this.createReport.bind(this);
+    this.updateReport = this.updateReport.bind(this);
   }
 
   componentDidMount() {
@@ -45,8 +46,26 @@ class Main extends React.Component {
         this.props.history.push(`/reports/${savedReport.id}`);
       })
       .catch(error => {
-        this.setState({errors: error});
+        console.log(error);
       });
+  }
+
+  updateReport(alteredReport) {
+    axios
+      .put(
+        `/api/reports/${alteredReport.id}.json`, alteredReport,
+        { withCredentials: true }
+      )
+      .then(response => {
+        const { reports } = this.state;
+        const idx = reports.findIndex(report => report.id === alteredReport.id);
+        reports[idx] = alteredReport;
+        this.props.history.push(`/reports/${alteredReport.id}`);
+        this.setState({ reports });
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   render() {
@@ -61,16 +80,17 @@ class Main extends React.Component {
     return ( 
       <div>
         <Header />
-        <div className = "grid">
-          < Reports reports = {
-            reports
-          }
-          activeId = {
-            Number(reportId)
-          }
-          /> 
+        <div className="grid">
+          <Reports reports={reports} activeId = {Number(reportId)} /> 
           <Switch>
-            <PropsRoute exact path="/reports/new" component={ReportForm} onSubmit={this.createReport}/>
+            <PropsRoute exact path="/reports/new" component={ReportForm} onSubmit={this.createReport} />
+            <PropsRoute
+              exact
+              path="/reports/:id/edit"
+              component={ReportForm}
+              report={report}
+              onSubmit={this.updateReport}
+            />
             <PropsRoute exact path="/reports/:id" component={Report} report={report} />
           </Switch>
         </div>

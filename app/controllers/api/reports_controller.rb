@@ -24,7 +24,10 @@ class Api::ReportsController < ApplicationController
 
   def update
     report = Report.find(params['id'])
-    report.update(report_params)
+    report.update(
+                  title: params[:title],
+                  description: params[:description]
+                  )
     respond_with Report, json: report
   end
 end

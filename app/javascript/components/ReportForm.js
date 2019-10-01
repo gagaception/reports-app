@@ -18,13 +18,16 @@ class ReportForm extends Component {
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
 
+  componentWillReceiveProps({ report }) {
+    this.setState({ report });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const { report } = this.state;
     const errors = validateForm(report);
-
     const data = new FormData();
-    
+
     for (var key in report) {
       data.append(key, report[key]);
     }
@@ -33,6 +36,9 @@ class ReportForm extends Component {
       this.setState({ errors });
     } else {
       const { onSubmit } = this.props;
+      if (onSubmit.name == "bound updateReport") {
+        onSubmit(report);
+      }
       onSubmit(data);
     }
   }
@@ -105,7 +111,7 @@ class ReportForm extends Component {
             />
           </div>  
           <div className="form-group">
-            <input type="file" className="form-control-file" name="file" onChange={this.fileUploadHandler} required />
+            <input type="file" className="form-control-file" name="file" onChange={this.fileUploadHandler} />
           </div>
 
           {this.renderErrors()}
