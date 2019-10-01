@@ -18,7 +18,7 @@ class Api::ReportsController < ApplicationController
     if report.save
       respond_with :api, report
     else
-      respond_with report.errors
+      respond_with :api, report.errors
     end
   end
 
@@ -29,5 +29,10 @@ class Api::ReportsController < ApplicationController
                   description: params[:description]
                   )
     respond_with Report, json: report
+  end
+
+  def download_file
+    report = Report.find(params['report_id'])
+    send_file "#{Rails.root}/public/reports/#{report.id}/file/#{report.filename}",  x_sendfile: true
   end
 end

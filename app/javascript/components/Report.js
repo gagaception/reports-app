@@ -9,7 +9,7 @@ const Report = ({ report }) => (
       <Link to={`/reports/${report.id}/edit`}>Edit</Link>
     </h2>
     <p>{report.description}</p>
-    <a href="#" download>{report.filename}</a>
+    <a href={`/api/reports/${report.id}/download_file`} download target="_blank">{report.filename}</a>
   </div>
 );
 

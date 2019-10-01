@@ -153,6 +153,10 @@ a.active {
   margin-top: 15px;
 }
 
+.reportForm .formControl {
+  font-size: 14px;
+}
+
 label>strong {
   display: inline-block;
   vertical-align: top;
