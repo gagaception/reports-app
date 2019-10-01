@@ -89,7 +89,7 @@ class ReportForm extends Component {
 
     return (
       <div>
-        <h2>New Event</h2>
+        <h2>New Report</h2>
         <form className="reportForm" onSubmit={this.handleSubmit}>
           <div className="formGroup">
             <input
