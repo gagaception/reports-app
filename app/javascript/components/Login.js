@@ -51,9 +51,9 @@ export default class Login extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="loginForm">
-          <div className="form-group">
+          <div className="formGroup">
             <input
-              className="form-control"
+              className="formControl"
               type="email"
               name="email"
               placeholder="Enter Email"
@@ -62,9 +62,9 @@ export default class Login extends Component {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <input
-              className="form-control"
+              className="formControl"
               type="password"
               name="password"
               placeholder="Enter password"
@@ -73,7 +73,7 @@ export default class Login extends Component {
               required
             />
           </div>
-          <button className="btn btn-outline-primary" type="submit">Login</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     );

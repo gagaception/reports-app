@@ -79,6 +79,22 @@ header .header-right a {
 header .header-right a:hover {
   cursor: pointer;
 }
+.loginForm {
+  width: 50%;
+  margin: 30px auto;
+  text-align: center;
+}
+.loginForm button {
+  margin: 0 !important;
+  font-size: 24px;
+}
+
+.formControl {
+  height: 50px;
+  font-family: "Maven Pro";
+  font-size: 24px;
+  text-align: center;
+}
 .grid {
   display: grid;
   grid-gap: 50px;
