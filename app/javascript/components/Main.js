@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import Header from './Header';
-import Reports from './Reports';
-import Report from './Report';
+import Reports from './reports/Reports';
+import Report from './reports/Report';
 import PropsRoute from './PropsRoute';
-import ReportForm from './ReportForm';
+import ReportForm from './reports/ReportForm';
 import { Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

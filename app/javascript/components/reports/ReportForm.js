@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   isEmptyObject,
   validateForm
-} from '../helpers/helpers';
+} from '../../helpers/helpers';
 
 class ReportForm extends Component {
   constructor(props) {
