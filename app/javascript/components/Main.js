@@ -81,7 +81,7 @@ class Main extends React.Component {
     return ( 
       <div>
         <div className="grid">
-          <Reports reports={reports} activeId = {Number(reportId)} /> 
+          <Reports reports={reports} activeId={Number(reportId)} /> 
           <Switch>
             <PropsRoute exact path="/reports/new" component={ReportForm} onSubmit={this.createReport} />
             <PropsRoute

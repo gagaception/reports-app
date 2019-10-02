@@ -256,3 +256,14 @@ input.search {
   margin: 15px 2px;
   padding: 4px 0 6px 6px;
 }
+#pageNumbers {
+  list-style: none;
+  display: flex;
+}
+
+#pageNumbers>li {
+  margin-right: 0.3em;
+  color: #236fff;
+  user-select: none;
+  cursor: pointer;
+}
