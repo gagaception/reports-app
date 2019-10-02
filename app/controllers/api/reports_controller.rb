@@ -2,7 +2,7 @@ class Api::ReportsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Report.all
+    respond_with Report.mime_type_order
   end
 
   def show

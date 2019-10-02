@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 class Report < ApplicationRecord
   validates_presence_of :title
   validates_uniqueness_of :title
   validates :title, length: { minimum: 3, maximum: 10 }
+
+  scope :mime_type_order, lambda {
+    order("(payload ->> 'mime_type')::Character ASC")
+  }
 
   attr_accessor :file
 
